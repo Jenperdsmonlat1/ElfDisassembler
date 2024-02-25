@@ -5,9 +5,12 @@
 #ifndef ELFDISASSEMBLER_PARSER_H
 #define ELFDISASSEMBLER_PARSER_H
 
+#include <cstdint>
 
-class parser {
+class Parser {
 
+public:
+    uint8_t *readFile(const char *filename);
 };
 
 

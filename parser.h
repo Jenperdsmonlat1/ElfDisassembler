@@ -11,6 +11,7 @@ class Parser {
 
 public:
     uint8_t *readFile(const char *filename);
+    
 };
 
 

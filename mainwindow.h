@@ -13,7 +13,7 @@ class MainWindow : public QMainWindow {
 public:
     bool maximized;
 
-    MainWindow(QWidget *parent = nullptr);
+    MainWindow(QWidget *parent = nullptr, const char *filename = nullptr);
     ~MainWindow();
 
     void MaximizeWindows(void);

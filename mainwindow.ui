@@ -351,7 +351,7 @@ border: none;</string>
             <property name="minimumSize">
              <size>
               <width>0</width>
-              <height>60</height>
+              <height>61</height>
              </size>
             </property>
             <property name="maximumSize">
@@ -366,6 +366,68 @@ border: none;</string>
             <property name="frameShadow">
              <enum>QFrame::Raised</enum>
             </property>
+            <layout class="QHBoxLayout" name="horizontalLayout_6">
+             <property name="spacing">
+              <number>15</number>
+             </property>
+             <property name="leftMargin">
+              <number>9</number>
+             </property>
+             <property name="topMargin">
+              <number>10</number>
+             </property>
+             <property name="rightMargin">
+              <number>9</number>
+             </property>
+             <property name="bottomMargin">
+              <number>0</number>
+             </property>
+             <item>
+              <widget class="QLineEdit" name="lineEdit">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>45</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">background-color: #322e38;
+color: white;
+padding: 10px;
+font: 10pt &quot;Sans Serif&quot;;</string>
+               </property>
+               <property name="placeholderText">
+                <string>Aller à un octect spécifique</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="pushButton">
+               <property name="minimumSize">
+                <size>
+                 <width>45</width>
+                 <height>45</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>45</width>
+                 <height>45</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">background-color: #322e38;
+</string>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+               <property name="icon">
+                <iconset theme="go-jump"/>
+               </property>
+              </widget>
+             </item>
+            </layout>
            </widget>
           </item>
           <item>
@@ -400,7 +462,7 @@ border: none;</string>
                   <x>0</x>
                   <y>0</y>
                   <width>826</width>
-                  <height>598</height>
+                  <height>597</height>
                  </rect>
                 </property>
                </widget>
@@ -423,7 +485,7 @@ border: none;</string>
                   <x>0</x>
                   <y>0</y>
                   <width>250</width>
-                  <height>598</height>
+                  <height>597</height>
                  </rect>
                 </property>
                </widget>

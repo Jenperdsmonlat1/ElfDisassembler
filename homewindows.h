@@ -22,7 +22,7 @@ public:
     void MaximizeWindows(void);
     void ReduceWindows(void);
     void ExitWindows(void);
-    const char *SwitchWindows(void);
+    void SwitchWindows(void);
     ~HomeWindows();
 
 private:

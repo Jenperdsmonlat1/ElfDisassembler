@@ -20,7 +20,6 @@ HomeWindows::HomeWindows(QWidget *parent)
     HomeWindows::connect(ui->maximizeButton, &QPushButton::released, this, &HomeWindows::MaximizeWindows);
     HomeWindows::connect(ui->reduceButton, &QPushButton::released, this, &HomeWindows::ReduceWindows);
     HomeWindows::connect(ui->fileOpenerButton, &QPushButton::released, this, &HomeWindows::SwitchWindows);
-    HomeWindows::connect(ui->fileOpenerButton, &QPushButton::released, this, &HomeWindows::SwitchWindows);
 
     shadow = new QGraphicsDropShadowEffect();
     shadow->setBlurRadius(50);
@@ -57,10 +56,14 @@ void HomeWindows::ExitWindows(void) {
     HomeWindows::close();
 }
 
-const char *HomeWindows::SwitchWindows(void) {
+void HomeWindows::SwitchWindows(void) {
 
     QString file = QFileDialog::getOpenFileName(this, tr("Sélectionner un fichier."), "/", tr("ELF"));
     std::cout << file.toStdString() << std::endl;
 
-    return file.toStdString().c_str();
+    MainWindow *mainWindows = new MainWindow(nullptr, file.toStdString().c_str());
+    mainWindows->show();
+    mainWindows->activateWindow();
+
+    this->ExitWindows();
 }

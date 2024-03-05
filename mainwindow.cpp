@@ -2,39 +2,56 @@
 #include "parser.h"
 #include "./ui_mainwindow.h"
 #include <cstdint>
+#include <cstdio>
 #include <QLabel>
-#include <iostream>
+#include <QTableWidget>
+#include <QTableWidgetItem>
+
+
+#ifdef __linux__
+    #include <sys/stat.h>
+#elif WIN32
+    #include <windows.h>
+#endif
 
 
 MainWindow::MainWindow(QWidget *parent, const char *filename)
     : QMainWindow(parent),
     ui(new Ui::MainWindow) {
 
-    uint8_t *bytes;
-    Parser *parser = new Parser();
-    QLabel *label = new QLabel();
+    Parser *parser = new Parser(filename);
+    uint8_t *bytes = parser->readFile();
+    uint32_t k = 0;
 
-    ui->setupUi(this);
+    struct stat st = parser->getFileInfo();
+
     setWindowFlags(Qt::FramelessWindowHint);
     setAttribute(Qt::WA_TranslucentBackground);
+    ui->setupUi(this);
 
     MainWindow::connect(ui->exitButton, &QPushButton::released, this, &MainWindow::ExitWindows);
     MainWindow::connect(ui->maximizeButton, &QPushButton::released, this, &MainWindow::MaximizeWindows);
     MainWindow::connect(ui->minimizButton, &QPushButton::released, this, &MainWindow::ReduceWindows);
 
-    bytes = parser->readFile(filename);
+    ui->tableWidget->setRowCount(st.st_size / 32);
+    ui->tableWidget->setColumnCount(32);
 
-    for (int i = 0; i < sizeof(bytes) + 1; i++) {
-        printf("%x ", bytes[i]);
+    for (int i = 0; i < 32; i++) {
+
+        for (int j = 0; j < st.st_size; j++) {
+
+            ui->tableWidget->setColumnWidth(i, 5);
+
+            if (bytes[k] < 10)
+                ui->tableWidget->setItem(i, j, new QTableWidgetItem(QString("0") + QString::number(bytes[k], 16)));
+            else
+                ui->tableWidget->setItem(i, j, new QTableWidgetItem(QString::number(bytes[k], 16)));
+
+            k++;
+        }
     }
 
-    /*for (int i = 0; i < sizeof(bytes); i++) {
-        label[i].setText(QString(bytes[i]));
-        label[i].setStyleSheet("color: white;");
-        label[i].setMargin(5);
-    }*/
-
-    //ui->scrollArea->setWidget(label);
+    //ui->scrollArea->setWidget(ui->tableWidget);
 }
 
 MainWindow::~MainWindow()

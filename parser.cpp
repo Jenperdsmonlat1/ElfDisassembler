@@ -6,6 +6,7 @@
 #include <cstdio>
 #include <cstdlib>
 #include <cstdint>
+#include <iostream>
 
 #ifdef __linux__
     #include <sys/stat.h>
@@ -14,19 +15,35 @@
 #endif
 
 
-uint8_t *Parser::readFile(const char *filename) {
+Parser::Parser(const std::string filename) {
+    this->filename = filename;
+}
+
+Parser::~Parser() {
+    delete this;
+}
+
+uint8_t *Parser::readFile() {
 
     char *fileContent;
     struct stat st;
 
-    FILE *file = fopen(filename, "r");
+    FILE *file = fopen(filename.c_str(), "r");
     if (file == NULL) return NULL;
 
-    stat(filename, &st);
+    stat(filename.c_str(), &st);
     fileContent = (char *)malloc(sizeof(char) * st.st_size);
 
     fgets(fileContent, st.st_size, file);
     fclose(file);
 
     return ((uint8_t *)fileContent);
+}
+
+struct stat Parser::getFileInfo() {
+
+    struct stat st;
+    stat(filename.c_str(), &st);
+
+    return st;
 }

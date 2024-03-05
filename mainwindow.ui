@@ -423,7 +423,8 @@ font: 10pt &quot;Sans Serif&quot;;</string>
                 <string/>
                </property>
                <property name="icon">
-                <iconset theme="go-jump"/>
+                <iconset theme="go-jump">
+                 <normaloff>.</normaloff>.</iconset>
                </property>
               </widget>
              </item>
@@ -465,6 +466,64 @@ font: 10pt &quot;Sans Serif&quot;;</string>
                   <height>597</height>
                  </rect>
                 </property>
+                <layout class="QHBoxLayout" name="horizontalLayout_7">
+                 <item>
+                  <widget class="QTableWidget" name="tableWidget">
+                   <property name="styleSheet">
+                    <string notr="true">QScrollBar:vertical {
+	background: transparent;
+    border: none;
+}
+
+QScrollBar:add-line:vertical {
+	background: transparent;
+    border: none;
+}
+
+QScrollBar:handle:vertical {
+	background: #322e38;
+    border-radius: 5px;
+    border: none;
+}
+
+QScrollBar:sub-line:vertical {
+	background: transparent;
+    border: none;
+}
+
+QScrollBar:horizontal {
+	background: transparent;
+    border: none;
+}
+
+QScrollBar:add-line:horizontal {
+	background: transparent;
+	border: none;
+}
+
+QScrollBar:handle:horizontal {
+	background: #322e38;
+    border-radius: 5px;
+    border: none;
+}
+
+QScrollBar:sub-line:horizontal {
+	background: transparent;
+	border: none;
+}</string>
+                   </property>
+                   <property name="showGrid">
+                    <bool>false</bool>
+                   </property>
+                   <attribute name="horizontalHeaderVisible">
+                    <bool>true</bool>
+                   </attribute>
+                   <attribute name="horizontalHeaderMinimumSectionSize">
+                    <number>35</number>
+                   </attribute>
+                  </widget>
+                 </item>
+                </layout>
                </widget>
               </widget>
              </item>

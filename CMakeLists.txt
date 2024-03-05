@@ -22,6 +22,8 @@ set(PROJECT_SOURCES
         homewindows.cpp
         parser.cpp
         parser.h
+        elfHeader.h
+        elfType.h
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
